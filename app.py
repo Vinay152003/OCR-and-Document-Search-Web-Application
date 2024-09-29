@@ -1,4 +1,3 @@
-%%writefile app.py
 import streamlit as st
 from transformers import AutoModel, AutoTokenizer
 from PIL import Image
