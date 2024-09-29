@@ -2,25 +2,22 @@ import streamlit as st
 from transformers import AutoModel, AutoTokenizer
 from PIL import Image
 import os
+import torch
 
-# Cache the model and tokenizer loading to optimize resource usage
-@st.cache_resource
-def load_model():
-    # Load the tokenizer and model with lower memory usage
-    tokenizer = AutoTokenizer.from_pretrained('ucaslcl/GOT-OCR2_0', trust_remote_code=True)
-    model = AutoModel.from_pretrained(
-        'ucaslcl/GOT-OCR2_0',
-        trust_remote_code=True,
-        low_cpu_mem_usage=True,
-        device_map='auto',  # Automatically use CPU if GPU isn't available
-        use_safetensors=True,
-        pad_token_id=tokenizer.eos_token_id
-    )
-    return tokenizer, model
+# Load the tokenizer and model
+tokenizer = AutoTokenizer.from_pretrained('ucaslcl/GOT-OCR2_0', trust_remote_code=True)
 
-# Load the model and tokenizer
-tokenizer, model = load_model()
-model.eval()  # Set model to evaluation mode
+# Check if CUDA (GPU) is available
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+# Load the model and move it to the appropriate device (GPU/CPU)
+model = AutoModel.from_pretrained('ucaslcl/GOT-OCR2_0', 
+                                  trust_remote_code=True, 
+                                  low_cpu_mem_usage=True, 
+                                  device_map='auto', 
+                                  use_safetensors=True, 
+                                  pad_token_id=tokenizer.eos_token_id).to(device)
+model = model.eval()
 
 # Define the OCR function
 def perform_ocr(image):
