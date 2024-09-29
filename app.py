@@ -1,27 +1,30 @@
-import torch
 import streamlit as st
 from transformers import AutoModel, AutoTokenizer
 from PIL import Image
 import os
 
-# Check if a GPU is available and load the model accordingly
-device = "cuda" if torch.cuda.is_available() else "cpu"
-st.write(f"Using device: {device}")
+# Cache the model and tokenizer loading to optimize resource usage
+@st.cache_resource
+def load_model():
+    # Load the tokenizer and model with lower memory usage
+    tokenizer = AutoTokenizer.from_pretrained('ucaslcl/GOT-OCR2_0', trust_remote_code=True)
+    model = AutoModel.from_pretrained(
+        'ucaslcl/GOT-OCR2_0',
+        trust_remote_code=True,
+        low_cpu_mem_usage=True,
+        device_map='auto',  # Automatically use CPU if GPU isn't available
+        use_safetensors=True,
+        pad_token_id=tokenizer.eos_token_id
+    )
+    return tokenizer, model
 
-# Load the tokenizer and model
-tokenizer = AutoTokenizer.from_pretrained('ucaslcl/GOT-OCR2_0', trust_remote_code=True)
-model = AutoModel.from_pretrained(
-    'ucaslcl/GOT-OCR2_0', 
-    trust_remote_code=True, 
-    low_cpu_mem_usage=True, 
-    device_map='auto', 
-    use_safetensors=True, 
-    pad_token_id=tokenizer.eos_token_id
-)
-model = model.eval().to(device)
+# Load the model and tokenizer
+tokenizer, model = load_model()
+model.eval()  # Set model to evaluation mode
 
 # Define the OCR function
 def perform_ocr(image):
+    # Convert PIL image to RGB format (if necessary)
     if image.mode != "RGB":
         image = image.convert("RGB")
 
