@@ -1,4 +1,4 @@
-# OCR Web Application Prototype
+# OCR and Document Search Web Application
 
 This repository contains the code for a web-based prototype that performs Optical Character Recognition (OCR) on uploaded images containing text in both Hindi and English. The application also implements a basic keyword search functionality based on the extracted text.
 
