@@ -125,7 +125,7 @@ You can access the live web application at: [https://huggingface.co/spaces/Vinay
 ## Usage
 
 1. Open the web application in your browser.
-2. Upload an image file (JPEG, PNG, etc.) containing text in Hindi and English.
+2. Upload an image file (JPEG, PNG, etc.) containing text in chinese and English.
 3. The extracted text will be displayed on the page.
 4. Enter a keyword to search within the extracted text and view the results.
 
