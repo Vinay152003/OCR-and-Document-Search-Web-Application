@@ -24,7 +24,11 @@ The goal of this project is to create a simple web application that allows users
 - Python >= 3.8
 - Necessary Libraries:
   - `torch`
+  - `torchvision`
   - `transformers`
+  - `tiktoken`
+  - `verovio`
+  - `accelerate`
   - `gradio`
 
 ## Install
