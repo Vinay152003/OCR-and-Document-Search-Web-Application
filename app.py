@@ -1,76 +1,48 @@
-import streamlit as st
+import gradio as gr
 from transformers import AutoModel, AutoTokenizer
 from PIL import Image
-import os
-import torch
+import torch  # Importing torch to check CUDA availability
 
-# Cache the model and tokenizer to optimize resource usage
-@st.cache_resource
-def load_model():
-    try:
-        # Load the tokenizer
-        tokenizer = AutoTokenizer.from_pretrained('ucaslcl/GOT-OCR2_0', trust_remote_code=True)
-        
-        # Load the model on CPU
-        model = AutoModel.from_pretrained(
-            'ucaslcl/GOT-OCR2_0',
-            trust_remote_code=True,
-            low_cpu_mem_usage=True,
-            device_map='cpu',  # Force CPU usage
-            use_safetensors=True,
-            pad_token_id=tokenizer.eos_token_id
-        )
-        model = model.eval()
-        return tokenizer, model
-    except Exception as e:
-        st.error(f"Error loading model: {e}")
-        st.stop()
+# Check CUDA availability
+def check_cuda():
+    if torch.cuda.is_available():
+        device_info = f"CUDA is available. GPU device: {torch.cuda.get_device_name(0)}"
+    else:
+        device_info = "CUDA is not available. Running on CPU."
+    return device_info
 
-# Load the model and tokenizer
-tokenizer, model = load_model()
+# Load the tokenizer and model
+tokenizer = AutoTokenizer.from_pretrained('ucaslcl/GOT-OCR2_0', trust_remote_code=True)
+model = AutoModel.from_pretrained('ucaslcl/GOT-OCR2_0', trust_remote_code=True, device_map="auto", use_safetensors=True, pad_token_id=tokenizer.eos_token_id)
+model = model.eval()  # No need for .cuda() with device_map="auto"
 
 # Define the OCR function
 def perform_ocr(image):
-    try:
-        # Convert PIL image to RGB format if necessary
-        if image.mode != "RGB":
-            image = image.convert("RGB")
+    # Check for CUDA availability and print the result
+    cuda_info = check_cuda()
+    print(cuda_info)  # This will be logged in the output
 
-        # Save the image to a temporary path
-        image_file_path = 'temp_image.jpg'
-        image.save(image_file_path)
+    # Convert PIL image to RGB format (if necessary)
+    if image.mode != "RGB":
+        image = image.convert("RGB")
 
-        # Perform OCR using the model
-        res = model.chat(tokenizer, image_file_path, ocr_type='ocr')  # Ensure this method exists and works as expected
+    # Save the image to a temporary path
+    image_file_path = 'temp_image.jpg'
+    image.save(image_file_path)
 
-        # Remove the temporary image file after processing
-        if os.path.exists(image_file_path):
-            os.remove(image_file_path)
+    # Perform OCR using the model
+    res = model.chat(tokenizer, image_file_path, ocr_type='ocr')
 
-        return res
+    return res
 
-    except Exception as e:
-        st.error(f"Error during OCR processing: {e}")
-        return None
+# Define the Gradio interface
+interface = gr.Interface(
+    fn=perform_ocr,
+    inputs=gr.Image(type="pil", label="Upload Image"),
+    outputs=gr.Textbox(label="Extracted Text"),
+    title="OCR and Document Search Web Application",
+    description="Upload an image to extract text using the GOT-OCR2_0 model."
+)
 
-# Streamlit UI
-st.title("OCR and Document Search Web Application")
-st.write("Upload an image to extract text using the GOT-OCR2_0 model.")
-
-# File uploader for image
-uploaded_file = st.file_uploader("Upload Image", type=["jpg", "jpeg", "png"])
-
-if uploaded_file is not None:
-    # Load the image
-    image = Image.open(uploaded_file)
-    st.image(image, caption='Uploaded Image', use_column_width=True)
-
-    # Perform OCR and display results
-    if st.button("Extract Text"):
-        with st.spinner("Processing..."):
-            extracted_text = perform_ocr(image)
-            if extracted_text:
-                st.success("Text extracted successfully!")
-                st.text_area("Extracted Text", extracted_text, height=300)
-            else:
-                st.error("Failed to extract text from the image.")
+# Launch the Gradio app
+interface.launch()
