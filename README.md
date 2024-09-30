@@ -1,4 +1,4 @@
-# OCR and Document Search Web Application
+# OCR and Document Search Web Application Using GOT-OCR2.0
 
 <a href="https://huggingface.co/spaces/Vinay15/OCR"><img src="https://img.shields.io/badge/Huggingface-yellow"></a>
 
