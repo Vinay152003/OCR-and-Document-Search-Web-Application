@@ -25,24 +25,30 @@ The goal of this project is to create a simple web application that allows users
   - `transformers`
   - `gradio`
 
-### Installation Steps
+## Install
+0. Our environment is cuda11.8+torch2.0.1
+1. Clone this repository and navigate to the GOT folder
+```bash
+git clone https://github.com/Ucas-HaoranWei/GOT-OCR2.0.git
+cd 'the GOT folder'
+```
+2. Install Package
+```Shell
+conda create -n got python=3.10 -y
+conda activate got
+pip install -e .
+```
 
-1. **Clone this repository**:
-   ```bash
-   git clone https://github.com/Ucas-HaoranWei/GOT-OCR2.0.git
-   cd 'the GOT folder'
-   ```
-
-2. **Create a virtual environment**:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # On Windows use `venv\Scripts\activate`
-   ```
-
-3. **Install the required libraries**:
-   ```bash
-   pip install torch torchvision transformers gradio
-   ```
+3. Install Flash-Attention
+```
+pip install ninja
+pip install flash-attn --no-build-isolation
+```
+## GOT Weights
+- [Huggingface](https://huggingface.co/ucaslcl/GOT-OCR2_0)
+- [Google Drive](https://drive.google.com/drive/folders/1OdDtsJ8bFJYlNUzCQG4hRkUL6V-qBQaN?usp=sharing)
+- [BaiduYun](https://pan.baidu.com/s/1G4aArpCOt6I_trHv_1SE2g) code: OCR2
+```
 
 ## OCR Model Integration
 
