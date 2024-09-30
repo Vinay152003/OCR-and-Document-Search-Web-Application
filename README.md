@@ -14,7 +14,7 @@ This repository contains the code for a web-based prototype that performs Optica
 
 ## Introduction
 
-The goal of this project is to create a simple web application that allows users to upload a single image, process the image to extract text using OCR, and provide a basic search feature for the extracted text.
+The goal of this project is to create a simple web application that allows users to upload a single image, process the image to extract text using OCR.
 
 ## Environment Setup
 
