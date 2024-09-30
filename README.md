@@ -2,7 +2,7 @@
 
 <a href="https://huggingface.co/spaces/Vinay15/OCR"><img src="https://img.shields.io/badge/Huggingface-yellow"></a>
 
-This repository contains the code for a web-based prototype that performs Optical Character Recognition (OCR) on uploaded images containing text in both Hindi and English. The application also implements a basic keyword search functionality based on the extracted text.
+This repository contains the code for a web-based prototype that performs Optical Character Recognition (OCR) on uploaded images containing text in both chinese and English. The application also implements a basic keyword search functionality based on the extracted text.
 
 ## Table of Contents
 - [Introduction](#introduction)
