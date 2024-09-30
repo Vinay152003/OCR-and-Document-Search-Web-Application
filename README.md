@@ -29,8 +29,8 @@ The goal of this project is to create a simple web application that allows users
 
 1. **Clone this repository**:
    ```bash
-   git clone https://github.com/Vinay152003/OCR-and-Document-Search-Web-Application.git
-   cd OCR-and-Document-Search-Web-Application
+   git clone https://github.com/Ucas-HaoranWei/GOT-OCR2.0.git
+   cd 'the GOT folder'
    ```
 
 2. **Create a virtual environment**:
