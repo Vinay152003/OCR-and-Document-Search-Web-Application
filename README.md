@@ -2,8 +2,7 @@
 
 <a href="https://huggingface.co/spaces/Vinay15/OCR"><img src="https://img.shields.io/badge/Huggingface-yellow"></a>
 
-This repository contains the code for a web-based prototype that performs Optical Character Recognition (OCR) on uploaded images containing text in both chinese and English. The application also implements a basic keyword search functionality based on the extracted text.
-
+This repository contains the code for a web-based prototype that performs Optical Character Recognition (OCR) on uploaded images containing text in both chinese and English.
 ## Table of Contents
 - [Introduction](#introduction)
 - [Environment Setup](#environment-setup)
@@ -127,7 +126,6 @@ You can access the live web application at: [https://huggingface.co/spaces/Vinay
 1. Open the web application in your browser.
 2. Upload an image file (JPEG, PNG, etc.) containing text in chinese and English.
 3. The extracted text will be displayed on the page.
-4. Enter a keyword to search within the extracted text and view the results.
 
 ## License
 
