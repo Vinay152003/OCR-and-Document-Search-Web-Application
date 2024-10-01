@@ -5,8 +5,11 @@ You can access the live web application at My Hugging Face Space: [https://huggi
 [Note: The Hugging Face space may be in a sleeping state due to inactivity. Please click the link to restart the space]
 
 This repository contains the code for a web-based prototype that performs Optical Character Recognition (OCR) on uploaded images containing text in both chinese and English.
+English Image
 ![OCR1](https://github.com/user-attachments/assets/4ac16c5c-e2bb-43b6-b5e2-26060f49eeb7)
+Chinese and English Image
 ![Screenshot 2024-10-01 202502](https://github.com/user-attachments/assets/8f83a2f9-503b-4510-b2c6-4febeb3b33fe)
+Chinese Image
 ![Screenshot 2024-10-01 202609](https://github.com/user-attachments/assets/a6c9e892-1131-4314-acbb-c36ca90e2023)
 
 ## Table of Contents
