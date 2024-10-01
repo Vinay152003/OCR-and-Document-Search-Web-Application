@@ -1,4 +1,7 @@
 # OCR and Document Search Web Application Using GOT-OCR2.0
+![OCR1](https://github.com/user-attachments/assets/4ac16c5c-e2bb-43b6-b5e2-26060f49eeb7)
+![Screenshot 2024-10-01 202502](https://github.com/user-attachments/assets/8f83a2f9-503b-4510-b2c6-4febeb3b33fe)
+![Screenshot 2024-10-01 202609](https://github.com/user-attachments/assets/a6c9e892-1131-4314-acbb-c36ca90e2023)
 
 <a href="https://huggingface.co/spaces/Vinay15/OCR"><img src="https://img.shields.io/badge/Huggingface-yellow"></a>
 ### Live URL
@@ -6,9 +9,7 @@ You can access the live web application at My Hugging Face Space: [https://huggi
 [Note: The Hugging Face space may be in a sleeping state due to inactivity. Please click the link to restart the space]
 
 This repository contains the code for a web-based prototype that performs Optical Character Recognition (OCR) on uploaded images containing text in both chinese and English.
-![OCR multilingual text screenshot 1](https://github.com/user-attachments/assets/2e63ff14-1847-4341-81ac-24b568f0e164)
-![OCR multilingual text screenshot 2](https://github.com/user-attachments/assets/690b2709-ca13-404b-8994-cf1f94ef5df9)
-![OCR multilingual text screenshot 3](https://github.com/user-attachments/assets/57fbc2fc-aa59-4fe1-a52f-5a7805bd818c)
+
 
 ## Table of Contents
 - [Introduction](#introduction)
