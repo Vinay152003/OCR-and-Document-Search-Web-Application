@@ -1,27 +1,14 @@
 import gradio as gr
 from transformers import AutoModel, AutoTokenizer
 from PIL import Image
-import torch  # Importing torch to check CUDA availability
-
-# Check CUDA availability
-def check_cuda():
-    if torch.cuda.is_available():
-        device_info = f"CUDA is available. GPU device: {torch.cuda.get_device_name(0)}"
-    else:
-        device_info = "CUDA is not available. Running on CPU."
-    return device_info
 
 # Load the tokenizer and model
 tokenizer = AutoTokenizer.from_pretrained('ucaslcl/GOT-OCR2_0', trust_remote_code=True)
-model = AutoModel.from_pretrained('ucaslcl/GOT-OCR2_0', trust_remote_code=True, device_map="auto", use_safetensors=True, pad_token_id=tokenizer.eos_token_id)
-model = model.eval()  # No need for .cuda() with device_map="auto"
+model = AutoModel.from_pretrained('ucaslcl/GOT-OCR2_0', trust_remote_code=True, low_cpu_mem_usage=True, device_map='cuda', use_safetensors=True, pad_token_id=tokenizer.eos_token_id)
+model = model.eval().cuda()
 
 # Define the OCR function
 def perform_ocr(image):
-    # Check for CUDA availability and print the result
-    cuda_info = check_cuda()
-    print(cuda_info)  # This will be logged in the output
-
     # Convert PIL image to RGB format (if necessary)
     if image.mode != "RGB":
         image = image.convert("RGB")
@@ -35,13 +22,36 @@ def perform_ocr(image):
 
     return res
 
+# Define the search function
+def search_keyword(extracted_text, keyword):
+    # Check if keyword is provided
+    if not keyword.strip():
+        return "Please enter a keyword."
+
+    # Search for the keyword in the extracted text
+    if keyword.lower() in extracted_text.lower():
+        return f"Keyword '{keyword}' found in the extracted text!"
+    else:
+        return f"Keyword '{keyword}' not found in the extracted text."
+
+# Define the interface with both OCR and keyword search functionality
+def ocr_and_search(image, keyword):
+    # Perform OCR to extract text from the image
+    extracted_text = perform_ocr(image)
+
+    # Perform keyword search within the extracted text
+    search_result = search_keyword(extracted_text, keyword)
+
+    # Return both the extracted text and the search result
+    return extracted_text, search_result
+
 # Define the Gradio interface
 interface = gr.Interface(
-    fn=perform_ocr,
-    inputs=gr.Image(type="pil", label="Upload Image"),
-    outputs=gr.Textbox(label="Extracted Text"),
+    fn=ocr_and_search,
+    inputs=[gr.Image(type="pil", label="Upload Image"), gr.Textbox(label="Enter Keyword to Search")],
+    outputs=[gr.Textbox(label="Extracted Text"), gr.Textbox(label="Search Result")],
     title="OCR and Document Search Web Application",
-    description="Upload an image to extract text using the GOT-OCR2_0 model."
+    description="Upload an image to extract text using the GOT-OCR2_0 model and search for a keyword within the extracted text."
 )
 
 # Launch the Gradio app
