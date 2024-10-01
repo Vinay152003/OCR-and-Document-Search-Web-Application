@@ -132,7 +132,3 @@ You can access the live web application at: [https://huggingface.co/spaces/Vinay
 1. Open the web application in your browser.
 2. Upload an image file (JPEG, PNG, etc.) containing text in chinese and English.
 3. The extracted text will be displayed on the page.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
