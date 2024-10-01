@@ -3,7 +3,7 @@
 <a href="https://huggingface.co/spaces/Vinay15/OCR"><img src="https://img.shields.io/badge/Huggingface-yellow"></a>
 ### Live URL
 You can access the live web application at My Hugging Face Space: [https://huggingface.co/spaces/Vinay15/OCR](https://huggingface.co/spaces/Vinay15/OCR)
-
+Note: The Hugging Face space may be in a sleeping state due to inactivity. Please click the link to restart the space
 This repository contains the code for a web-based prototype that performs Optical Character Recognition (OCR) on uploaded images containing text in both chinese and English.
 ![OCR multilingual text screenshot 1](https://github.com/user-attachments/assets/2e63ff14-1847-4341-81ac-24b568f0e164)
 ![OCR multilingual text screenshot 2](https://github.com/user-attachments/assets/690b2709-ca13-404b-8994-cf1f94ef5df9)
