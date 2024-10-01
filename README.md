@@ -1,7 +1,7 @@
 # OCR and Document Search Web Application Using GOT-OCR2.0
 <a href="https://huggingface.co/spaces/Vinay15/OCR"><img src="https://img.shields.io/badge/Huggingface-yellow"></a>
 ### Live URL
-You can access the live web application at My Hugging Face Space: [https://huggingface.co/spaces/Vinay15/OCR](https://huggingface.co/spaces/Vinay15/OCR)
+You can access the Live Web Application at My Hugging Face Space: [https://huggingface.co/spaces/Vinay15/OCR](https://huggingface.co/spaces/Vinay15/OCR)
 [Note: The Hugging Face space may be in a sleeping state due to inactivity. Please click the link to restart the space]
 
 This repository contains the code for a web-based application that performs Optical Character Recognition (OCR) on uploaded images containing text in both Hindi and English. The application also implements a basic keyword search functionality based on the extracted text.
