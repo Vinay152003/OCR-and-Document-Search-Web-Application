@@ -4,7 +4,7 @@
 You can access the live web application at My Hugging Face Space: [https://huggingface.co/spaces/Vinay15/OCR](https://huggingface.co/spaces/Vinay15/OCR)
 [Note: The Hugging Face space may be in a sleeping state due to inactivity. Please click the link to restart the space]
 
-This repository contains the code for a web-based prototype that performs Optical Character Recognition (OCR) on uploaded images containing text in both chinese and English.
+This repository contains the code for a web-based application that performs Optical Character Recognition (OCR) on uploaded images containing text in both Hindi and English. The application also implements a basic keyword search functionality based on the extracted text.
 
 English Image 1
 ![OCR1](https://github.com/user-attachments/assets/4ac16c5c-e2bb-43b6-b5e2-26060f49eeb7)
@@ -136,3 +136,4 @@ You can access the live web application at: [https://huggingface.co/spaces/Vinay
 1. Open the web application in your browser.
 2. Upload an image file (JPEG, PNG, etc.) containing text in chinese and English.
 3. The extracted text will be displayed on the page.
+4. Enter a keyword to search within the extracted text and view the results.
