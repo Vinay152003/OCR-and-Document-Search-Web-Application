@@ -1,7 +1,7 @@
 <h3><a href="">OCR and Document Search Web Application Using General OCR Theory: Towards OCR-2.0 via a Unified End-to-end Model</a></h3>
 <a href="https://huggingface.co/spaces/Vinay15/OCR"><img src="https://img.shields.io/badge/Huggingface-yellow"></a>
 
-## Live URL
+### Live URL
 You can access the Live Web Application at My Hugging Face Space: [https://huggingface.co/spaces/Vinay15/OCR](https://huggingface.co/spaces/Vinay15/OCR)
 [Note: The Hugging Face space may be in a sleeping state due to inactivity. Please click the link to restart the space]
 
