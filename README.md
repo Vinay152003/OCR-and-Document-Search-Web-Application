@@ -6,11 +6,11 @@ You can access the live web application at My Hugging Face Space: [https://huggi
 
 This repository contains the code for a web-based application that performs Optical Character Recognition (OCR) on uploaded images containing text in both Hindi and English. The application also implements a basic keyword search functionality based on the extracted text.
 
--English Image 1
+-English Image Output Text 1
 ![OCR1](https://github.com/user-attachments/assets/4ac16c5c-e2bb-43b6-b5e2-26060f49eeb7)
--Chinese and English Image 2
+-Chinese and English Image Output Text 2
 ![Screenshot 2024-10-01 202502](https://github.com/user-attachments/assets/8f83a2f9-503b-4510-b2c6-4febeb3b33fe)
--Chinese Image 3
+-Chinese Image Output Text 3
 ![Screenshot 2024-10-01 202609](https://github.com/user-attachments/assets/a6c9e892-1131-4314-acbb-c36ca90e2023)
 
 ## Table of Contents
