@@ -20,6 +20,7 @@ This repository contains the code for a web-based application that performs Opti
 - [OCR Model Integration](#ocr-model-integration)
 - [Web Application Development](#web-application-development)
 - [Deployment](#deployment)
+- [Live URL](#Live-URL)
 - [Usage](#usage)
 - [License](#license)
 
